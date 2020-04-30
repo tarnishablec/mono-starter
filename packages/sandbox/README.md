@@ -1,11 +1,11 @@
-# `@gallop/sandbox`
+# `@~scope~/sandbox`
 
 > TODO: description
 
 ## Usage
 
-```
-const sandbox = require('@gallop/sandbox');
+```ts
+const sandbox = require('@~scope~/sandbox');
 
 // TODO: DEMONSTRATE API
 ```

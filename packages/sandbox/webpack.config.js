@@ -33,14 +33,6 @@ module.exports = {
   },
   optimization: {
     minimize: ProdMode,
-    /**
-     * TODO
-     * 🚫 terser cause component props name can not be auto detected
-     * Feature request: https://github.com/terser/terser/issues/622
-     * if you want to enable minimization
-     * ensure using propNameList argument in component(name,builder,[...propNames])
-     * to make gallop having ability to know your component's prop names
-     */
     minimizer: [
       new TerserPlugin({
         test: /\.js(\?.*)?$/i
@@ -53,7 +45,6 @@ module.exports = {
       {
         test: /\.((s[ac])|c)ss$/,
         use: [
-          // 'to-string-loader',
           ProdMode ? MiniCssExtractPlugin.loader : 'style-loader',
           'css-loader',
           {

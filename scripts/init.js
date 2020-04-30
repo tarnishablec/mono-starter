@@ -9,7 +9,9 @@ const name = args.name
 const filesNeedReplace = [
   `./scripts/setting.js`,
   `./package.json`,
-  `./tsconfig.json`
+  `./tsconfig.json`,
+  `./packages/sandbox/package.json`,
+  `./packages/sandbox/README.md`
 ]
 
 main()
@@ -30,6 +32,6 @@ async function main() {
     fse.writeFileSync(filePath, res)
   })
 
-  const n = name ?? require('../package.json').name
+  const n = name && require('../package.json').name
   await run(`yarn run new ${n}`)
 }

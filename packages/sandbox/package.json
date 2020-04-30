@@ -1,7 +1,7 @@
 {
-  "name": "@mono-starter/test-example",
-  "version": "0.5.1",
-  "description": "test-example",
+  "name": "@~scope~/sandbox",
+  "version": "0.0.0",
+  "description": "sandbox",
   "main": "./App.ts",
   "files": [
     "App.ts",
@@ -15,10 +15,11 @@
     "type": "git"
   },
   "keywords": [
-    "gallop"
+    "webpack",
+    "sandbox"
   ],
   "sideEffects": false,
-  "author": "tarnishablec <tarnishablec@outlook.com>",
+  "author": "",
   "license": "MIT",
   "homepage": "",
   "publishConfig": {
@@ -39,7 +40,6 @@
     "sass-loader": "^8.0.2",
     "style-loader": "^1.2.0",
     "terser-webpack-plugin": "^2.3.5",
-    "to-string-loader": "^1.1.6",
     "ts-loader": "^7.0.1",
     "typescript": "^3.8.3",
     "url-loader": "^4.1.0",
@@ -48,9 +48,7 @@
     "webpack-dev-server": "^3.10.3"
   },
   "dependencies": {
-    "@gallop/gallop": "^0.5.1",
     "lodash": "^4.17.15",
     "rxjs": "^6.5.5"
-  },
-  "gitHead": "63bffbe0c3c6bdc12cb8e9734d9e1e631a61f44c"
+  }
 }
