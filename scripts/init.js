@@ -17,14 +17,15 @@ main()
 
 async function main() {
   await run(
-    `git remote add template https://github.com/tarnishablec/typescript-monorepo-template.git`
+    `git remote add template https://github.com/tarnishablec/mono-starter.git`
   )
   await run(`git fetch template`)
   await run(`git merge template/master --allow-unrelated-histories`)
 
-  filesNeedReplace.forEach((f) => {
-    let filePath = path.resolve(__dirname, '..', f)
-    const res = fse.readFileSync(filePath, 'utf-8').replace(/~scope~/g, scope)
-    fse.writeFileSync(filePath, res)
-  })
+  scope &&
+    filesNeedReplace.forEach((f) => {
+      let filePath = path.resolve(__dirname, '..', f)
+      const res = fse.readFileSync(filePath, 'utf-8').replace(/~scope~/g, scope)
+      fse.writeFileSync(filePath, res)
+    })
 }
