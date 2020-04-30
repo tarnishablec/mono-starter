@@ -25,10 +25,7 @@ async function main() {
 
   filesNeedReplace.forEach((f) => {
     let filePath = path.resolve(__dirname, '..', f)
-    const res = fse
-      .readFileSync(filePath, 'utf-8')
-      .replace(/~scope~/g, scope)
-      .replace(/~name~/g, name)
+    const res = fse.readFileSync(filePath, 'utf-8').replace(/~scope~/g, scope)
     fse.writeFileSync(filePath, res)
   })
 
