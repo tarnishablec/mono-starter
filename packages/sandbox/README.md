@@ -1,11 +1,11 @@
-# `@oruo/oruo`
+# `@gallop/sandbox`
 
 > TODO: description
 
 ## Usage
 
 ```
-const oruo = require('@oruo/oruo');
+const sandbox = require('@gallop/sandbox');
 
 // TODO: DEMONSTRATE API
 ```

@@ -1,0 +1,56 @@
+{
+  "name": "@mono-starter/test-example",
+  "version": "0.5.1",
+  "description": "test-example",
+  "main": "./App.ts",
+  "files": [
+    "App.ts",
+    "src"
+  ],
+  "scripts": {
+    "start": "cross-env NODE_ENV=development webpack-dev-server --config webpack.config.js",
+    "build": "cross-env NODE_ENV=production webpack --config webpack.config.js"
+  },
+  "repository": {
+    "type": "git"
+  },
+  "keywords": [
+    "gallop"
+  ],
+  "sideEffects": false,
+  "author": "tarnishablec <tarnishablec@outlook.com>",
+  "license": "MIT",
+  "homepage": "",
+  "publishConfig": {
+    "access": "public"
+  },
+  "devDependencies": {
+    "@types/lodash": "^4.14.150",
+    "autoprefixer": "^9.7.6",
+    "clean-webpack-plugin": "^3.0.0",
+    "copy-webpack-plugin": "^5.1.1",
+    "cross-env": "^7.0.2",
+    "css-loader": "^3.5.3",
+    "file-loader": "^6.0.0",
+    "html-webpack-plugin": "^4.2.0",
+    "mini-css-extract-plugin": "^0.9.0",
+    "postcss-loader": "^3.0.0",
+    "sass": "^1.26.5",
+    "sass-loader": "^8.0.2",
+    "style-loader": "^1.2.0",
+    "terser-webpack-plugin": "^2.3.5",
+    "to-string-loader": "^1.1.6",
+    "ts-loader": "^7.0.1",
+    "typescript": "^3.8.3",
+    "url-loader": "^4.1.0",
+    "webpack": "^4.43.0",
+    "webpack-cli": "^3.3.11",
+    "webpack-dev-server": "^3.10.3"
+  },
+  "dependencies": {
+    "@gallop/gallop": "^0.5.1",
+    "lodash": "^4.17.15",
+    "rxjs": "^6.5.5"
+  },
+  "gitHead": "63bffbe0c3c6bdc12cb8e9734d9e1e631a61f44c"
+}

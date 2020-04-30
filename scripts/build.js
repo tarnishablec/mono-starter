@@ -7,7 +7,7 @@ const args = require('minimist')(process.argv.slice(2))
 const formats = args.formats || args.f
 const devOnly = args.devOnly || args.d
 
-const targets = require('./utils').targets(args._)
+const targets = require('./utils').resolveTargets(args._)
 
 buildAll(targets)
 
@@ -52,10 +52,9 @@ buildAll(targets)
 async function cleanDts(target) {
   const distDir = path.resolve(`packages/${target}/dist`)
   fse.ensureDir(distDir).then(() => {
-    fse.remove(`${distDir}/${target}.esm.d.ts`)
-    fse.remove(`${distDir}/${target}.global.d.ts`)
+    fse.remove(`${distDir}/index.global.d.ts`)
     fse
-      .rename(`${distDir}/${target}.cjs.d.ts`, `${distDir}/${target}.d.ts`)
+      .rename(`${distDir}/index.esm.d.ts`, `${distDir}/index.d.ts`)
       .then(() => {
         console.log(chalk.blueBright('d.ts file generated'))
       })

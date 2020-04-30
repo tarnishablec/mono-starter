@@ -1,6 +1,6 @@
 module.exports = {
-  scope: `~oruo~`,
-  projectName: `~oruo~`,
+  scope: `~scope~`,
+  projectName: `~name~`,
   auther: 'tarnishablec <tarnishablec@outlook.com>',
-  gitUrl: 'https://github.com/tarnishablec/~oruo~.git'
+  gitUrl: ''
 }

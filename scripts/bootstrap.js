@@ -5,13 +5,13 @@ const { scope, projectName, auther, gitUrl } = require('./setting')
 
 const baseVersion = require('../lerna.json').version
 const packagesDir = path.resolve(__dirname, '../packages')
-const targets = require('./utils').targets(args._)
+const targets = require('./utils').resolveTargets(args._, args.all)
 const execa = require('execa')
 
 main()
 
 function main() {
-  targets.forEach(shortName => {
+  targets.forEach((shortName) => {
     const packageDir = path.join(packagesDir, shortName)
     if (!fse.statSync(packageDir).isDirectory()) {
       return
@@ -76,7 +76,7 @@ function initIndexJs(filePath, name, args) {
       filePath,
       `'use strict'
 
-module.exports = require('./dist/${name}.cjs.js')
+module.exports = require('./dist/index.global.js')
       `.trim() + '\n'
       //       `
       // 'use strict'
@@ -100,7 +100,9 @@ function initPkg(filePath, longName, shortName, args) {
     'devDependencies',
     'peerDependencies',
     'dependencies',
-    'private'
+    'private',
+    'buildOptions',
+    'gitHead'
   ]
 
   let pkgCache = {}
@@ -111,7 +113,7 @@ function initPkg(filePath, longName, shortName, args) {
     if (oldPkg.private) {
       return
     } else {
-      cacheFields.forEach(field => {
+      cacheFields.forEach((field) => {
         pkgCache[field] = oldPkg[field]
       })
     }
@@ -122,15 +124,16 @@ function initPkg(filePath, longName, shortName, args) {
       name: longName,
       version: baseVersion,
       description: shortName,
-      main: 'index.js',
-      module: `dist/${shortName}.esm.js`,
-      files: [`index.js`, 'dist'],
-      types: `dist/${shortName}.d.ts`,
+      main: `src/index.ts`,
+      module: `dist/index.esm.js`,
+      files: [`index.js`, 'dist', 'src'],
+      unpkg: `dist/index.global.js`,
+      types: `dist/index.d.ts`,
       repository: {
         type: 'git',
         url: gitUrl
       },
-      keywords: [`${projectName}`],
+      keywords: [`${projectName}`, 'typescript'],
       directories: {
         src: 'src',
         test: '__tests__'

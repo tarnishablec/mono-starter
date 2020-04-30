@@ -1,12 +1,12 @@
 const fs = require('fs')
 const execa = require('execa')
 
-const excludes = ['test-example']
+const excludes = ['sandbox']
 
-const targets = argsTargets =>
+const resolveTargets = (argsTargets, exclude = true) =>
   (argsTargets.length === 0 ? fs.readdirSync('packages') : argsTargets).filter(
-    f => {
-      if (excludes.includes(f)) {
+    (f) => {
+      if (exclude && excludes.includes(f)) {
         return false
       }
       if (!fs.statSync(`packages/${f}`).isDirectory()) {
@@ -23,4 +23,4 @@ const targets = argsTargets =>
 const run = (command, ...opts) =>
   execa.command(command, { stdio: 'inherit', ...opts })
 
-module.exports = { excludes, targets, run }
+module.exports = { excludes, resolveTargets, run }
