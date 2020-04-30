@@ -1,7 +1,7 @@
 const args = require('minimist')(process.argv.slice(2))
 const fse = require('fs-extra')
 const path = require('path')
-const { scope, projectName, auther, gitUrl } = require('./setting')
+const { scope, auther, gitUrl } = require('./setting')
 
 const baseVersion = require('../lerna.json').version
 const packagesDir = path.resolve(__dirname, '../packages')
@@ -133,7 +133,7 @@ function initPkg(filePath, longName, shortName, args) {
         type: 'git',
         url: gitUrl
       },
-      keywords: [`${projectName}`, 'typescript'],
+      keywords: [`${scope}`, 'typescript'],
       directories: {
         src: 'src',
         test: '__tests__'
