@@ -4,7 +4,6 @@ const args = require('minimist')(process.argv.slice(2))
 const { run } = require('./utils')
 
 const scope = args.scope
-const name = args.name
 
 const filesNeedReplace = [
   `./scripts/setting.js`,
@@ -28,7 +27,4 @@ async function main() {
     const res = fse.readFileSync(filePath, 'utf-8').replace(/~scope~/g, scope)
     fse.writeFileSync(filePath, res)
   })
-
-  const n = name && require('../package.json').name
-  await run(`yarn run new ${n}`)
 }
