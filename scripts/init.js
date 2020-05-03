@@ -16,9 +16,11 @@ const filesNeedReplace = [
 main()
 
 async function main() {
-  await run(
-    `git remote add template https://github.com/tarnishablec/mono-starter.git`
-  )
+  try {
+    await run(
+      `git remote add template https://github.com/tarnishablec/mono-starter.git`
+    )
+  } catch (error) {}
   await run(`git fetch template`)
   await run(`git merge template/master --allow-unrelated-histories`)
 
